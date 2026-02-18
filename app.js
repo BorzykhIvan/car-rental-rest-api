@@ -26,11 +26,11 @@ setupSwagger(app);
 
 module.exports = app;
 
-if (require.main === module) {
-  const PORT = process.env.PORT || 3000;
-  const HOST = process.env.HOST || '0.0.0.0';
-
-  app.listen(PORT, HOST, () => 
-    console.log(`Serwer wypożyczalni uruchomiony na ${HOST}:${PORT} 🚘`)
-  );
+const PORT = process.env.PORT;
+if (!PORT) {
+  throw new Error('PORT не задан в переменных окружения Railway!');
 }
+
+app.listen(PORT, '0.0.0.0', () =>
+  console.log(`Server running on 0.0.0.0:${PORT} 🚘`)
+);
