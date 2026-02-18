@@ -11,13 +11,9 @@ app.use(express.json());
 
 // wersjonowanie API
 app.use('/api/v1/cars', carRoutes);
-
 app.use('/api/v1/users', userRoutes);
-
 app.use('/api/v1/rentals', rentalRoutes);
-
 app.use('/api/v1/brands', brandRoutes);
-
 app.use('/api/v1/car-features', carFeatureRoutes);
 
 // endpoint testowy
@@ -31,5 +27,10 @@ setupSwagger(app);
 module.exports = app;
 
 if (require.main === module) {
-  app.listen(3000, () => console.log('Serwer wypożyczalni uruchomiony na porcie 3000 🚘'));
+  const PORT = process.env.PORT || 3000;
+  const HOST = process.env.HOST || '0.0.0.0';
+
+  app.listen(PORT, HOST, () => 
+    console.log(`Serwer wypożyczalni uruchomiony na ${HOST}:${PORT} 🚘`)
+  );
 }
