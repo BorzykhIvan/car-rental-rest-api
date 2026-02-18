@@ -10,7 +10,7 @@ const options = {
       description: 'REST API wypożyczalni samochodów (N-tier)',
     },
     servers: [
-      { url: 'http://localhost:3000/api/v1' },
+      { url: `${process.env.API_BASE_URL || 'http://localhost:3000'}/api/v1` },
     ],
   },
   apis: ['./routes/*.js'], // pliki z komentarzami swaggera
