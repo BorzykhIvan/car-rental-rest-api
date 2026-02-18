@@ -2,11 +2,8 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'car_rental',
-  password: 'postgres', // jeśli zmieniałeś hasło, wpisz swoje
-  port: 5432,
+  connectionString: process.env.DATABASE_URL, // берем URL из переменных Railway
+  ssl: { rejectUnauthorized: false },        // обязательно для облачного Postgres
 });
 
 module.exports = pool;
